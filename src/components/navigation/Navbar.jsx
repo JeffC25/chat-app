@@ -9,9 +9,9 @@
 
 const Navbar = () => {
     return (
-        <div className="fixed block h-20 w-full bg-gray-200 ">
+        <div className="absolute h-20 w-screen bg-gray-300 ">
             <form className="w-1/4 h-12 my-4 ">
-                <input type="text" placeholder="search" className="h-full w-full bg-gray-300 rounded-full my-auto p-4"/>
+                <input type="text" placeholder="search" className="h-full w-full bg-gray-200 rounded-full my-auto pl-4"/>
             </form>
         </div>
     )

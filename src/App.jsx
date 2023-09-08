@@ -1,13 +1,12 @@
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "./utils/firebase"
-import Navbar from "./components/navigation/Navbar";
-
-// const app = initializeApp(firebaseConfig);
+import { useState } from 'react'
+import './App.css'
+import Navbar from './components/navigation/Navbar'
 
 function App() {
-  // console.log(app);
+  const [count, setCount] = useState(0)
+
   return (
-    <Navbar/>
+    <Navbar />
   )
 }
 
