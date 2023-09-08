@@ -1,5 +1,6 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA2a3Ia3PwV26dT25W2AEYQMR1Z10KV5j0",
@@ -8,7 +9,8 @@ const firebaseConfig = {
     storageBucket: "chat-app-b275d.appspot.com",
     messagingSenderId: "979674436067",
     appId: "1:979674436067:web:e9a528aedc2f141058d0d6",
-    measurementId: "G-VP82B81KTM"
+    measurementId: "G-VP82B81KTM",
+    databaseURL: "https://DATABASE_NAME.firebaseio.com"
 };
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
@@ -27,3 +29,4 @@ export function userSignIn() {
         const credential = GoogleAuthProvider.credentialFromError(error);
     });
 }
+export const database = getDatabase();
