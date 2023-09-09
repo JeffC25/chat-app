@@ -1,11 +1,13 @@
 import { useState } from 'react'
-import Navbar from './components/navigation/Navbar'
+import Layout from './components/Layout'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <Navbar />
+    <Layout>
+      Hello world
+    </Layout>
   )
 }
 
