@@ -1,6 +1,5 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA2a3Ia3PwV26dT25W2AEYQMR1Z10KV5j0",
@@ -18,15 +17,14 @@ const provider = new GoogleAuthProvider();
 export function userSignIn() {
     signInWithPopup(auth, provider)
         .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
         })
         .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.customData.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-    });
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.customData.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+        });
 }
-export const database = getDatabase();
