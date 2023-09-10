@@ -1,13 +1,19 @@
-import { useState } from 'react'
-import Layout from './components/Layout'
+import * as utils from './utils/firebase';
+import Layout from './components/Layout';
+
+const app = utils.app;
+const auth = utils.auth;
+const database = utils.database;
 
 function App() {
-
+  
   return (
     <Layout>
-      Hello world
-    </Layout>
-  )
-}
+      <div>
 
-export default App
+      </div>
+    </Layout>
+  );
+};
+
+export default App;

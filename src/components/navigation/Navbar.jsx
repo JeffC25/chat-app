@@ -1,3 +1,5 @@
+import * as utils from '../../utils/firebase';
+
 const Navbar = () => {
     return (
         <div className="fixed h-20 w-full bg-gray-900 flex justify-between items-center">
@@ -12,7 +14,9 @@ const Navbar = () => {
             </form>
 
             <div className="flex-grow items-center text-right px-4">
-                <button className="h-12 w-20 bg-gray-800 rounded-full text-white self-center">Login</button>
+                <button className="h-12 w-20 bg-gray-800 rounded-full text-white self-center" onClick={utils.userSignIn}>
+                    Login
+                </button>
             </div>
             
         </div>
