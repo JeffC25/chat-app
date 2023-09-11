@@ -1,6 +1,5 @@
-const Message = (content) => {
+const Message = (content, fromUser) => {
     // TODO: Check if message is from current user
-    const fromUser = false
     return (
         
         <div className={`flex items-center ${fromUser ? "flex-row-reverse" : "flex-row"} `}>
@@ -44,7 +43,7 @@ const Dock = () => {
 
 const ChatRoom = () => {
     // TODO: Fetch messages from database
-    const messages = [Message("Hello"), Message("World")];
+    const messages = [Message("Hello", true), Message("World", false)];
 
     return(
         <div className="flex flex-col h-full">
