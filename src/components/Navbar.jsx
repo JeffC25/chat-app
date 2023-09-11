@@ -1,4 +1,7 @@
 import '../utils/firebase';
+import { getAuth, signOut } from "firebase/auth";
+
+const auth = getAuth();
 
 const SearchBar = () => {
     return (
@@ -12,9 +15,16 @@ const SearchBar = () => {
 };
 
 const LogoutButton = () => {
+    const logout = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            // An error happened.
+          });
+    }
     return (
-        <button className="h-12 w-20 bg-neutral-300 rounded-full self-center">
-            Login
+        <button className="h-12 w-20 bg-neutral-300 rounded-full self-center" onClick={logout}>
+            Logout
         </button>
     );
 };

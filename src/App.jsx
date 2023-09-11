@@ -9,15 +9,15 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 
 function App() {
 
-  const auth = getAuth();
-  const provider = new GoogleAuthProvider();
+  // const auth = getAuth();
+  // const provider = new GoogleAuthProvider();
 
   const { user } = useContext(AuthContext);
 
   return (
     <>
       {!user ? <>
-        <LoginPage auth={auth} provider={provider}/>
+        <LoginPage/>
       </> : <Layout>
         <div>
           <ChatRoom />
