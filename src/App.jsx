@@ -1,19 +1,28 @@
-import * as utils from './utils/firebase';
 import Layout from './components/Layout';
 import ChatRoom from './components/ChatRoom';
 
-const app = utils.app;
-const auth = utils.auth;
-const database = utils.database;
+import { AuthContext } from "./utils/Authentication";
+import { useContext } from 'react';
+
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 
 function App() {
-  
+
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
+  const { user } = useContext(AuthContext);
+
   return (
-    <Layout>
-      <div>
-        <ChatRoom/>
-      </div>
-    </Layout>
+    <>
+      {!user ? <>
+        <button onClick={() => signInWithPopup(auth, provider)}>CLICK TO SIGN IN</button>
+      </> : <Layout>
+        <div>
+          <ChatRoom />
+        </div>
+      </Layout>}
+    </>
   );
 };
 
