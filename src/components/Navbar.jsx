@@ -1,4 +1,4 @@
-import * as utils from '../utils/firebase';
+import '../utils/firebase';
 
 const SearchBar = () => {
     return (
@@ -11,9 +11,9 @@ const SearchBar = () => {
     );
 };
 
-const LoginButton = () => {
+const LogoutButton = () => {
     return (
-        <button className="h-12 w-20 bg-neutral-300 rounded-full self-center" onClick={utils.userSignIn}>
+        <button className="h-12 w-20 bg-neutral-300 rounded-full self-center">
             Login
         </button>
     );
@@ -27,7 +27,7 @@ const Navbar = () => {
 
             <div className="flex-grow flex justify-center"> {SearchBar()} </div>
 
-            <div className="flex-grow text-right px-4"> {LoginButton()} </div>
+            <div className="flex-grow text-right px-4"> {LogoutButton()} </div>
             
         </div>
     );

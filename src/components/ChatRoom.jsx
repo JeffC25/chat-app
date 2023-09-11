@@ -1,7 +1,7 @@
-const Message = (content, fromUser) => {
+const Message = (content) => {
     // TODO: Check if message is from current user
+    const fromUser = false;
     return (
-        
         <div className={`flex items-center ${fromUser ? "flex-row-reverse" : "flex-row"} `}>
             <div className="w-12 h-12 rounded-full bg-neutral-200">
                 <img src=""/>
@@ -12,8 +12,8 @@ const Message = (content, fromUser) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 const Converstation = (messages) => {
     return (
@@ -43,7 +43,7 @@ const Dock = () => {
 
 const ChatRoom = () => {
     // TODO: Fetch messages from database
-    const messages = [Message("Hello", true), Message("World", false)];
+    const messages = [Message("Hello"), Message("World")];
 
     return(
         <div className="flex flex-col h-full">

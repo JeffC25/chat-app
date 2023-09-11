@@ -1,5 +1,6 @@
 import Layout from './components/Layout';
 import ChatRoom from './components/ChatRoom';
+import LoginPage from './pages/LoginPage';
 
 import { AuthContext } from "./utils/Authentication";
 import { useContext } from 'react';
@@ -16,7 +17,7 @@ function App() {
   return (
     <>
       {!user ? <>
-        <button onClick={() => signInWithPopup(auth, provider)}>CLICK TO SIGN IN</button>
+        <LoginPage auth={auth} provider={provider}/>
       </> : <Layout>
         <div>
           <ChatRoom />
