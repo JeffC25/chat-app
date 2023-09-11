@@ -2,12 +2,12 @@ const Message = (content) => {
     // TODO: Check if message is from current user
     const fromUser = false;
     return (
-        <div className={`flex items-center ${fromUser ? "flex-row-reverse" : "flex-row"} `}>
-            <div className="w-12 h-12 rounded-full bg-neutral-200">
+        <div className={`flex items-start ${fromUser ? "flex-row-reverse" : "flex-row"} my-2`}>
+            <div className="w-12 h-12 rounded-full bg-neutral-200 shadow-xl">
                 <img src=""/>
             </div>
-            <div className="w-fit bg-neutral-200 m-2 rounded-full">
-                <div className="m-4 text-neutral-700">
+            <div className="w-fit bg-neutral-200 rounded-2xl max-w-lg shadow-xl flex mx-2">
+                <div className="m-4 text-neutral-700 ">
                     {content}
                 </div>
             </div>
@@ -17,7 +17,7 @@ const Message = (content) => {
 
 const Converstation = (messages) => {
     return (
-        <div className="h-max flex-grow-1 fixed self-center w-3/4">
+        <div className="self-center w-full flex flex-col overflow-auto">
             {...messages}
         </div>
     );
@@ -35,7 +35,7 @@ const Input = () => {
 
 const Dock = () => {
     return(
-        <div className="h-20 w-full bg-transparent fixed bottom-0 flex justify-center items-center">
+        <div className="h-20 w-full bg-transparent flex justify-center items-center">
             {Input()}
         </div>
     );
@@ -43,12 +43,25 @@ const Dock = () => {
 
 const ChatRoom = () => {
     // TODO: Fetch messages from database
-    const messages = [Message("Hello"), Message("World")];
+    const messages = [
+        Message("Hello"), 
+        Message("A very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long reply"),
+        Message("1"),
+        Message("2"),
+        Message("3"),
+        Message("Test test"),
+        Message("Test"),
+        Message("yipee")
+    ];
 
     return(
-        <div className="flex flex-col h-full">
-            {Converstation(messages)}
-            {Dock()}
+        <div className="h-screen w-screen flex flex-col fixed">
+            <div className="overflow-y-scroll block flex-shrink-1 w-2/3 mx-auto">
+                {Converstation(messages)}
+            </div>
+            <div className="bottom-0 w-full h-fit pb-20">
+                {Dock()}
+            </div>
         </div>
     );
 };
