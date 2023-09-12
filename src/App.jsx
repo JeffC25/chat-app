@@ -13,14 +13,13 @@ function App() {
   // const provider = new GoogleAuthProvider();
 
   const { user } = useContext(AuthContext);
-
   return (
     <>
       {!user ? <>
         <LoginPage/>
       </> : <Layout>
         <div>
-          <ChatRoom />
+          <ChatRoom user={user}/>
         </div>
       </Layout>}
     </>
