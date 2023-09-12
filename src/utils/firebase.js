@@ -8,7 +8,7 @@ const firebaseConfig = {
     messagingSenderId: "979674436067",
     appId: "1:979674436067:web:e9a528aedc2f141058d0d6",
     measurementId: "G-VP82B81KTM",
-    databaseURL: "https://DATABASE_NAME.firebaseio.com"
+    databaseURL: "https://chat-app-b275d-default-rtdb.firebaseio.com"
 };
 
 export const app = initializeApp(firebaseConfig);

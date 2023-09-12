@@ -19,7 +19,7 @@ function App() {
         <button onClick={() => signInWithPopup(auth, provider)}>CLICK TO SIGN IN</button>
       </> : <Layout>
         <div>
-          <ChatRoom />
+          <ChatRoom user={user} />
         </div>
       </Layout>}
     </>

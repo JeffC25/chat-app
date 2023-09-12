@@ -1,3 +1,5 @@
+import { addUserByUID } from "../utils/database";
+
 const Message = (content, fromUser) => {
     // TODO: Check if message is from current user
     return (
@@ -41,10 +43,12 @@ const Dock = () => {
     );
 };
 
-const ChatRoom = () => {
+const ChatRoom = ({user}) => {
     // TODO: Fetch messages from database
     const messages = [Message("Hello", true), Message("World", false)];
-
+    if(user.email) {
+        addUserByUID(user.uid, user.email)
+    }
     return(
         <div className="flex flex-col h-full">
             {Converstation(messages)}
