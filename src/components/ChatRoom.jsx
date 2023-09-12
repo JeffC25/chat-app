@@ -1,17 +1,13 @@
 import { getDatabase, ref, child, push, update, onValue } from "firebase/database";
 import { getAuth } from "firebase/auth";
-import { useContext, useState, useEffect} from 'react';
+import { useContext, useState, useEffect, useRef} from 'react';
 import { AuthContext } from "../utils/Authentication";
 
 
 
 const Message = ({userID, author, authorPic, body}) => {
-    // TODO: Check if message is from current user
-    const fromUser = (author == userID);
-    console.log(author)
-    console.log(userID)
     return (
-        <div className={`flex items-start ${fromUser ? "flex-row-reverse" : "flex-row"} my-2`}>
+        <div className={`flex items-start ${author == userID ? "flex-row-reverse" : "flex-row"} my-2`}>
             <div className="w-12 h-12 rounded-full bg-neutral-200 shadow-xl">
                 <img src={authorPic} className="rounded-full"/>
             </div>
@@ -50,20 +46,21 @@ const Input = ({user}) => {
       }
 
     return (
-        <form onSubmit={sendMessage} className="h-12 w-2/3 flex self-center">
+        <form onSubmit={sendMessage} className="h-12 w-2/3 flex self-center shadow-lg">
             <input type="text"
                 placeholder="Messsage"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="h-full w-full bg-neutral-200 rounded-l-full my-auto pl-4 outline-none"/>
-            <button type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 ">Send</button>
+                className="h-full w-full bg-neutral-200 rounded-l-full my-auto pl-4 outline-none text-neutral-700"/>
+            <button type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 text-blue-700">Send</button>
         </form>
     );
 };
 
 const ChatRoom = ({ user }) => {
-    // const { user } = useContext(AuthContext);
-
+    // const anchor = useRef();
+    const { test } = useContext(AuthContext);
+    console.log(test);
     const [messages, setMessages] = useState([""]);
     const db = getDatabase();
 
@@ -73,6 +70,7 @@ const ChatRoom = ({ user }) => {
             const data = snapshot.val();
             console.log(data);
             setMessages((Object.values(data)).map(item => Message({ ...item, userID:user.uid, })));
+            // anchor.current.scrollIntoView({ behavior: 'smooth' });
         })
         return () => {
         }
@@ -83,6 +81,7 @@ const ChatRoom = ({ user }) => {
             <div className="overflow-y-scroll block flex-shrink-1 w-2/3 mx-auto">
                 <div className="self-center w-full h-screen flex flex-col px-4">
                     {...messages}
+                    {/* <div ref={anchor}></div> */}
                 </div>
             </div>
             <div className="bottom-0 w-full h-fit pb-20">

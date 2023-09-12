@@ -5,8 +5,8 @@ const auth = getAuth();
 
 const SearchBar = () => {
     return (
-        <form className="h-12 w-2/3 flex self-center">
-            <input type="text" placeholder="search" className="h-full w-full bg-neutral-200 rounded-l-full my-auto pl-4 outline-none"/>
+        <form className="h-12 w-2/3 flex self-center shadow-lg rounded-full">
+            <input type="text" placeholder="search" className="h-full w-full bg-neutral-200 text-neutral-500 rounded-l-full my-auto pl-4 outline-none"/>
             <button type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 pl-4">
                 
             </button>
@@ -23,7 +23,7 @@ const LogoutButton = () => {
           });
     }
     return (
-        <button className="h-12 w-20 bg-neutral-300 rounded-full self-center" onClick={logout}>
+        <button className="h-12 w-20 bg-neutral-200 rounded-full self-center text-cyan-600 shadow-lg" onClick={logout}>
             Logout
         </button>
     );
