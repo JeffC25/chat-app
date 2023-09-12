@@ -2,7 +2,7 @@ import { getDatabase, ref, child, push, update, onValue } from "firebase/databas
 import { getAuth } from "firebase/auth";
 import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from "../utils/Authentication";
-import { addUserByUID, getEmailByUID, sendAMessage } from "../utils/database";
+
 
 
 const Message = ({ userID, author, authorPic, body }) => {
@@ -10,7 +10,6 @@ const Message = ({ userID, author, authorPic, body }) => {
         <div className={`flex items-start ${author == userID ? "flex-row-reverse" : "flex-row"} my-2`}>
             <div className="w-12 h-12 rounded-full bg-neutral-200 shadow-xl">
                 <img src={authorPic} className="rounded-full" />
-
             </div>
             <div className="w-fit bg-neutral-200 rounded-2xl max-w-lg shadow-xl flex mx-2">
                 <div className="m-4 text-neutral-700 break-all">
@@ -47,20 +46,14 @@ const Input = ({ user }) => {
     }
 
     return (
-        <>
-            <form className="h-12 w-2/3 flex self-center">
-                <input type="text" placeholder="Messsage" className="h-full w-full bg-neutral-200 rounded-l-full my-auto pl-4 outline-none" />
-                <button type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 ">Send</button>
-            </form>
-            <form onSubmit={sendMessage} className="h-12 w-2/3 flex self-center shadow-lg">
-                <input type="text"
-                    placeholder="Messsage"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="h-full w-full bg-neutral-200 rounded-l-full my-auto pl-4 outline-none text-neutral-700" />
-                <button type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 text-blue-700">Send</button>
-            </form>
-        </>
+        <form onSubmit={sendMessage} className="h-12 w-2/3 flex self-center shadow-lg">
+            <input type="text"
+                placeholder="Messsage"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="h-full w-full bg-neutral-200 rounded-l-full my-auto pl-4 outline-none text-neutral-700" />
+            <button type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 text-blue-700">Send</button>
+        </form>
     );
 };
 
