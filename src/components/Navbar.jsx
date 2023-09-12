@@ -17,9 +17,9 @@ const SearchBar = () => {
 const LogoutButton = () => {
     const logout = () => {
         signOut(auth).then(() => {
-            // Sign-out successful.
+            // Sign-out successful
           }).catch((error) => {
-            // An error happened.
+            // An error happened
           });
     }
     return (
