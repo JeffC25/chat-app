@@ -3,8 +3,6 @@ import { getAuth } from "firebase/auth";
 import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from "../utils/Authentication";
 
-
-
 const Message = ({ userID, author, authorPic, body }) => {
     return (
         <div className={`flex items-start ${author == userID ? "flex-row-reverse" : "flex-row"} my-2`}>

@@ -20,10 +20,12 @@ export async function getEmailByUID(uid) {
 
 // a function to add a user object (just an email queried by email)
 // this should be called on a user authentication to make sure their email is in the DB
-export function addUserByUID(uid, email) {
+export function addUserByUID(uid, email, name, photo) {
   const db = getDatabase();
   set(ref(db, 'users/' + uid), {
-    email: email
+    name: name,
+    photo: photo,
+    email: email,
   });
 }
 
@@ -54,6 +56,7 @@ export async function sendAMessage(sender_email, receiver_email, message) {
   payload["type"] = "received"
   push(ref(db, 'messages/' + receiver_uid + '/' + sender_uid), payload);
 }
+
 
 //this function takes in a user email + someone they are chatting with and will return
 //a list chronological chats of the form {type: str, message: str} or an empty list
