@@ -2,6 +2,7 @@ import { getDatabase, ref, child, push, update, onValue } from "firebase/databas
 import { getAuth } from "firebase/auth";
 import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from "../utils/Authentication";
+import Layout from "./Layout";
 
 const Message = ({ userID, author, authorPic, body }) => {
     return (
@@ -75,19 +76,21 @@ const ChatRoom = ({ user }) => {
     }, []);
 
     return (
-        <div className="h-screen w-screen flex flex-col fixed">
-            <div className="overflow-y-scroll block flex-shrink-1 w-2/3 mx-auto">
-                <div className="self-center w-full h-screen flex flex-col px-4">
-                    {...messages}
-                    {/* <div ref={anchor}></div> */}
+        <Layout>
+            <div className="h-screen w-screen flex flex-col fixed">
+                <div className="overflow-y-scroll block flex-shrink-1 w-2/3 mx-auto">
+                    <div className="self-center w-full h-screen flex flex-col px-4">
+                        {...messages}
+                        {/* <div ref={anchor}></div> */}
+                    </div>
+                </div>
+                <div className="bottom-0 w-full h-fit pb-20">
+                    <div className="h-20 w-full bg-transparent flex justify-center items-center">
+                        {Input({ user })}
+                    </div>
                 </div>
             </div>
-            <div className="bottom-0 w-full h-fit pb-20">
-                <div className="h-20 w-full bg-transparent flex justify-center items-center">
-                    {Input({ user })}
-                </div>
-            </div>
-        </div>
+        </Layout>
     );
 };
 

@@ -1,11 +1,12 @@
 import Layout from './components/Layout';
 import ChatRoom from './components/ChatRoom';
-import LoginPage from './pages/LoginPage';
+import LoginPage from './components/LoginPage';
 
 import { AuthContext } from "./utils/Authentication";
 import { useContext } from 'react';
 
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
 
@@ -17,11 +18,11 @@ function App() {
     <>
       {!user ? <>
         <LoginPage/>
-      </> : <Layout>
-        <div>
-          <ChatRoom user={user}/>
-        </div>
-      </Layout>}
+      </> :<BrowserRouter>
+          <Routes>
+            <Route path="" element={<ChatRoom user={user}/>}/>
+          </Routes>
+        </BrowserRouter>}
     </>
   );
 };
