@@ -9,7 +9,7 @@ const Message = ({ userID, author, authorPic, body }) => {
     return (
         <div className={`flex items-start ${author == userID ? "flex-row-reverse" : "flex-row"} my-2`}>
             <div className="w-12 h-12 rounded-full bg-neutral-200 shadow-xl">
-                <img src={authorPic} className="rounded-full" />
+                <img src={authorPic} alt="" className="rounded-full" />
             </div>
             <div className="w-fit bg-neutral-200 rounded-2xl max-w-lg shadow-xl flex mx-2">
                 <div className="m-4 text-neutral-700 break-all">
@@ -38,7 +38,7 @@ const Input = ({ user }) => {
 
         // Write the new post's data simultaneously in the posts list and the user's post list.
         const updates = {};
-        updates['/messages/' + newPostKey] = postData;
+        updates['/rooms/global/' + newPostKey] = postData;
         // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
         setMessage("")
@@ -64,7 +64,7 @@ const ChatRoom = ({ user }) => {
     const [messages, setMessages] = useState([""]);
     const db = getDatabase();
 
-    const messageRef = ref(db, "/messages/");
+    const messageRef = ref(db, "/rooms/global/");
     useEffect(() => {
         onValue(messageRef, (snapshot) => {
             const data = snapshot.val();
