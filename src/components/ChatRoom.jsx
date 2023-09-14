@@ -8,7 +8,7 @@ const Message = ({ userID, author, authorPic, body }) => {
     return (
         <div className={`flex items-start ${author == userID ? "flex-row-reverse" : "flex-row"} my-2`}>
             <div className="w-12 h-12 rounded-full bg-neutral-200 shadow-xl">
-                <img src={authorPic} alt="" referrerpolicy="no-referrer" className="rounded-full" />
+                <img src={authorPic} alt="" referrerPolicy="no-referrer" className="rounded-full" />
             </div>
             <div className="w-fit bg-neutral-200 rounded-2xl max-w-lg shadow-xl flex mx-2">
                 <div className="m-4 text-neutral-700 break-all">
