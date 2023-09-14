@@ -1,22 +1,22 @@
 // import { useNavigate } from 'react-router';
 import { createSearchParams, useNavigate } from 'react-router-dom';
-import '../utils/firebase';
 import { getAuth, signOut } from "firebase/auth";
 import { useState } from 'react';
+import '../utils/firebase';
 
 const auth = getAuth();
 
 const SearchBar = () => {
     const navigate = useNavigate();
     const [query, setQuery] = useState("")
-    const handleSubmit = () => {
-        // e.preventDefault()
+    const handleSubmit = (e) => {
+        e.preventDefault()
         // console.log(query)
         navigate({
-            pathname: "search",
+            pathname: "/search",
             search: createSearchParams({
-                query: query
-            }).toString()
+                query: query,
+            }).toString(),
         });
     };
     
@@ -35,9 +35,11 @@ const SearchBar = () => {
 };
 
 const LogoutButton = () => {
+    const navigate = useNavigate();
     const logout = () => {
         signOut(auth).then(() => {
             // Sign-out successful
+            navigate("/");
           }).catch((error) => {
             // An error happened
           });
