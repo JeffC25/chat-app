@@ -45,7 +45,7 @@ const LogoutButton = () => {
           });
     }
     return (
-        <button className="h-12 w-20 bg-neutral-200 rounded-full self-center text-cyan-600 shadow-lg" onClick={logout}>
+        <button className="h-12 w-20 bg-neutral-200 hover:bg-neutral-400 rounded-full self-center text-cyan-600 shadow-lg" onClick={logout}>
             Logout
         </button>
     );

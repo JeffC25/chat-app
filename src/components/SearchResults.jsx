@@ -16,8 +16,8 @@ const userCard = () => {
 const SearchResults = () => {
     return (
         <Layout>
-            <div className="h-screen w-screen flex flex-col fixed justify-center ">
-                <div className="overflow-y-scroll w-full mx-auto">
+            <div className="h-full w-screen flex flex-col fixed -mt-20 justify-center ">
+                <div className="overflow-y-scroll w-full mx-auto h-3/4">
                     {Array(10).fill(userCard())}
                 </div>
             </div>
