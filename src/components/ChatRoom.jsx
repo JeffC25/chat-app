@@ -24,6 +24,10 @@ const Input = ({ user }) => {
 
     const sendMessage = (e) => {
         e.preventDefault()
+        if (message == "") {
+            return;
+        }
+        
         const db = getDatabase();
 
         const postData = {
