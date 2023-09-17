@@ -7,8 +7,9 @@ import { onAuthStateChanged } from "firebase/auth";
 
 const userCard = (user) => {
     const name = user.name;
+
     return (
-        <Link to="/" className="flex w-1/2 h-24 bg-[rgba(0,0,0,0.25)] hover:bg-[rgba(0,0,0,0.5)] p-2 rounded-full mx-auto my-2 items-center" >
+        <Link to="/chat/global" className="flex w-1/2 h-24 bg-[rgba(0,0,0,0.25)] hover:bg-[rgba(0,0,0,0.5)] p-2 rounded-full mx-auto my-2 items-center" >
             <img src={user.photo} alt="" className=" aspect-square w-20 h-20 object-cover rounded-full bg-transparent p-1"/>
             <div className=" pl-2 h-full align-middle items-center flex overflow-clip text-ellipsis text-neutral-200 text-xl">
                 {name}
