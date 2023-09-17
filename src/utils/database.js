@@ -136,3 +136,25 @@ export async function sendMessage(user_email, recipient_email, message) {
   };
   push(ref(db, 'rooms/' + roomID + '/messages'), payload);
 }
+
+export async function getUsersFriends(user_email) {
+  const user_uid = await getUIDByEmail(user_email);
+  const dbRef = ref(getDatabase());
+  const snapshot = await get(child(dbRef, 'users/' + user_uid + '/rooms'))
+  const roomList = snapshot.val();
+  var userList = [];
+  for (const roomID in roomList) { //because of auto keys this should go chronologically
+    const first_half = roomID.slice(0, roomID.length / 2);
+    const second_half = roomID.slice(roomID.length /2);
+    if(user_uid == first_half) {
+      const newSnap = await get(child(dbRef, 'users/' + second_half))
+      const value = newSnap.val();
+      userList.push(value);
+    } else {
+      const newSnap = await get(child(dbRef, 'users/' + first_half))
+      const value = newSnap.val();
+      userList.push(value);
+    }
+  }
+  return userList;
+}
