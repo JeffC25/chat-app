@@ -158,3 +158,16 @@ export async function getUsersFriends(user_email) {
   }
   return userList;
 }
+
+export async function generateRoomIDFromEmails(email1, email2) {
+  const user_uid = await getUIDByEmail(email1);
+  const recipient_uid = await getUIDByEmail(email2);
+
+  const uid_list = [user_uid, recipient_uid];
+
+  let sorted_uid_list = uid_list.sort();
+
+  const roomID = sorted_uid_list[0] + sorted_uid_list[1];
+
+  return roomID
+}
