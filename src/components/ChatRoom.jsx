@@ -3,9 +3,6 @@ import { getAuth } from "firebase/auth";
 import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from "../utils/Authentication";
 import Layout from "./Layout";
-import { createRoom } from "../utils/database";
-
-createRoom("jwburke@bu.edu", "jwburke2002@gmail.com");
 
 const Message = ({ userID, author, authorPic, body }) => {
     return (
