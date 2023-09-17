@@ -47,9 +47,10 @@ export async function getListOfUsers() {
 export async function createRoom(user_email, other_email) {
   //first we create the room
   const db = getDatabase();
-  const roomKey = dbRef.key();
+  const dbRef = ref(getDatabase()).push();
+  var roomKey = dbRef.key();
 
-  const memberStruct = [getUIDByEmail(user_email), getUIDByEmail(other_email)];
+  const memberStruct = [await getUIDByEmail(user_email), await getUIDByEmail(other_email)];
   
   var chatRoomData = {
     id: roomKey,
@@ -70,7 +71,7 @@ export async function createRoom(user_email, other_email) {
 
 // get all rooms of a user
 export async function getUsersRooms(user_email) {
-  const uid = getUIDByEmail(user_email);
+  const uid = await getUIDByEmail(user_email);
   const dbRef = ref(getDatabase());
   const snapshot = await get(child(dbRef, 'users/' + uid + '/rooms'))
   const value = snapshot.val();
