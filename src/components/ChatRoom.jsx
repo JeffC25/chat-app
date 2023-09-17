@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from "../utils/Authentication";
 import Layout from "./Layout";
+import { useParams } from "react-router";
 
 const Message = ({ userID, author, authorPic, body }) => {
     return (
@@ -59,12 +60,17 @@ const Input = ({ user }) => {
 const ChatRoom = ({ user }) => {
     // const anchor = useRef();
 
-    const { test } = useContext(AuthContext);
-    console.log(test);
+    const { id } = useParams();
     const [messages, setMessages] = useState([""]);
     const db = getDatabase();
 
-    const messageRef = ref(db, "/rooms/global/");
+    let messageRef = ref(db, "/rooms/global/");
+    if (id) {
+        messageRef = ref(db, `/rooms/${id}`);
+    }
+
+    console.log(id)
+
     useEffect(() => {
         onValue(messageRef, (snapshot) => {
             const data = snapshot.val();

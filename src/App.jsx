@@ -25,6 +25,7 @@ function App() {
             <Route path="" element={<ChatRoom user={user}/>}/>
             {/* <Route path="/search" element={<SearchResults/>}/> */}
             <Route path="/conversations" element={<Conversations user={user}/>}/>
+            <Route path="/chat/:id" element={<ChatRoom user={user}/>}/>
           </Routes>
         </BrowserRouter>}
     </>
