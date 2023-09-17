@@ -4,6 +4,7 @@ import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from "../utils/Authentication";
 import Layout from "./Layout";
 import { useParams } from "react-router";
+import * as DATA from "../utils/database"
 
 const Message = ({ userID, author, authorPic, body }) => {
     return (
@@ -20,29 +21,16 @@ const Message = ({ userID, author, authorPic, body }) => {
     );
 };
 
-const Input = ({ user }) => {
+const Input = ({ user, id }) => {
     const [message, setMessage] = useState("")
 
     const sendMessage = (e) => {
         e.preventDefault()
-        const db = getDatabase();
-
-        const postData = {
-            author: user.uid,
-            body: message,
-            authorPic: user.photoURL
-        };
-
-        // Get a key for a new Post.
-        const newPostKey = push(child(ref(db), 'posts')).key;
-
-        // Write the new post's data simultaneously in the posts list and the user's post list.
-        const updates = {};
-        updates['/rooms/global/' + newPostKey] = postData;
-        // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-        setMessage("")
-        return update(ref(db), updates);
+        if(message == "") {
+            return 
+        } else {
+            DATA.sendMessage(user.email, user.photoURL, id, message);
+        }
     }
 
     return (
@@ -69,8 +57,6 @@ const ChatRoom = ({ user }) => {
         messageRef = ref(db, `/rooms/${id}`);
     }
 
-    console.log(id)
-
     useEffect(() => {
         onValue(messageRef, (snapshot) => {
             const data = snapshot.val();
@@ -94,7 +80,7 @@ const ChatRoom = ({ user }) => {
                 </div>
                 <div className="bottom-0 w-full h-fit pb-20">
                     <div className="h-20 w-full bg-transparent flex justify-center items-center">
-                        {Input({ user })}
+                        {Input({ user, id })}
                     </div>
                 </div>
             </div>

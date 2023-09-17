@@ -111,30 +111,22 @@ export async function createRoom(user_email, recipient_email) {
   const db = getDatabase();
 
   var payload = {};
-  payload["users"] = {user_1: user_email, user_2: recipient_email};
   set(ref(db, 'rooms/' + roomID), payload);
 
   set(ref(db, 'users/' + user_uid + '/rooms/' + roomID), roomID);
   set(ref(db, 'users/' + recipient_uid + '/rooms/' + roomID), roomID);
 }
 
-export async function sendMessage(user_email, recipient_email, message) {
-  const user_uid = await getUIDByEmail(user_email);
-  const recipient_uid = await getUIDByEmail(recipient_email);
-
-  const uid_list = [user_uid, recipient_uid];
-
-  let sorted_uid_list = uid_list.sort();
-
-  const roomID = sorted_uid_list[0] + sorted_uid_list[1];
+export async function sendMessage(user_email, photo, roomID, message) {
 
   const db = getDatabase();
 
   var payload = {
-    sender: user_email,
-    message: message
+    author: user_email,
+    body: message,
+    authorPic: photo
   };
-  push(ref(db, 'rooms/' + roomID + '/messages'), payload);
+  push(ref(db, 'rooms/' + roomID), payload);
 }
 
 export async function getUsersFriends(user_email) {
