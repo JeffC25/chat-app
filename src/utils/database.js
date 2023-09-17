@@ -6,7 +6,7 @@ export async function getUIDByEmail(email) {
   const snapshot = await get(child(dbRef, `users`));
   const list = snapshot.val();
   for (const key in list) {
-    if (list[key].email == email) {
+    if (list[key].user_info.email == email) {
       return key
     }
   }
@@ -15,14 +15,14 @@ export async function getEmailByUID(uid) {
   const dbRef = ref(getDatabase());
   const snapshot = await get(child(dbRef, `users/${uid}`));
   const snapVal = snapshot.val();
-  return snapVal.email;
+  return snapVal.user_info.email;
 }
 
 // a function to add a user object (just an email queried by email)
 // this should be called on a user authentication to make sure their email is in the DB
 export function addUserByUID(uid, email, name, photo) {
   const db = getDatabase();
-  set(ref(db, 'users/' + uid), {
+  set(ref(db, 'users/' + uid + '/user_info'), {
     name: name,
     photo: photo,
     email: email,
@@ -37,7 +37,7 @@ export async function getListOfUsers() {
   const list = snapshot.val();
   let emailList = [];
   for (const key in list) {
-    emailList.push(list[key].email);
+    emailList.push(list[key].user_info.email);
   }
   return emailList;
 }
@@ -149,11 +149,11 @@ export async function getUsersFriends(user_email) {
     if(user_uid == first_half) {
       const newSnap = await get(child(dbRef, 'users/' + second_half))
       const value = newSnap.val();
-      userList.push(value);
+      userList.push(value.user_info);
     } else {
       const newSnap = await get(child(dbRef, 'users/' + first_half))
       const value = newSnap.val();
-      userList.push(value);
+      userList.push(value.user_info);
     }
   }
   return userList;
