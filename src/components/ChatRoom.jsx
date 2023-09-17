@@ -30,6 +30,8 @@ const Input = ({ user, id }) => {
             return 
         } else {
             DATA.sendMessage(user.email, user.photoURL, id, message);
+            document.getElementById("input_text").value = "";
+            setMessage("");
         }
     }
 
@@ -39,6 +41,7 @@ const Input = ({ user, id }) => {
                 placeholder="Messsage"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                id="input_text"
                 className="h-full w-full bg-neutral-200 rounded-l-full my-auto pl-4 outline-none text-neutral-700" />
             <button type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 text-blue-700">Send</button>
         </form>
