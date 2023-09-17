@@ -3,6 +3,10 @@ import { getAuth } from "firebase/auth";
 import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from "../utils/Authentication";
 import Layout from "./Layout";
+import { addUserByUID } from "../utils/database";
+// import { createRoom,  } from "../utils/database";
+
+// createRoom("jwburke@bu.edu", "jwburke2002@gmail.com");
 
 const Message = ({ userID, author, authorPic, body }) => {
     return (
@@ -24,10 +28,6 @@ const Input = ({ user }) => {
 
     const sendMessage = (e) => {
         e.preventDefault()
-        if (message == "") {
-            return;
-        }
-        
         const db = getDatabase();
 
         const postData = {
@@ -62,6 +62,7 @@ const Input = ({ user }) => {
 
 const ChatRoom = ({ user }) => {
     // const anchor = useRef();
+
     const { test } = useContext(AuthContext);
     console.log(test);
     const [messages, setMessages] = useState([""]);
@@ -73,9 +74,10 @@ const ChatRoom = ({ user }) => {
             const data = snapshot.val();
             console.log(data);
             setMessages((Object.values(data)).map(item => Message({ ...item, userID: user.uid, })));
-            // anchor.current.scrollIntoView({ behavior: 'smooth' });
         })
+
         return () => {
+            
         }
     }, []);
 
