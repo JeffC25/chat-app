@@ -1,13 +1,14 @@
 import Layout from './components/Layout';
 import ChatRoom from './components/ChatRoom';
 import LoginPage from './components/LoginPage';
-import SearchResults from './components/SearchResults';
+// import SearchResults from './components/SearchResults';
 
 import { AuthContext } from "./utils/Authentication";
 import { useContext } from 'react';
 
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Conversations from './components/Conversations';
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
       </> :<BrowserRouter>
           <Routes>
             <Route path="" element={<ChatRoom user={user}/>}/>
-            <Route path="/search" element={<SearchResults/>}/>
+            {/* <Route path="/search" element={<SearchResults/>}/> */}
+            <Route path="/conversations" element={<Conversations user={user}/>}/>
           </Routes>
         </BrowserRouter>}
     </>
