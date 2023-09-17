@@ -45,7 +45,7 @@ export async function getListOfUsers() {
 //this is an async function that will create a chat between two users
 //it takes in (all string) a sender email, receiver email, and initial message
 // it updates the database, also good for just sending a chat
-export async function sendAMessage(sender_email, receiver_email, message) {
+/* export async function sendAMessage(sender_email, receiver_email, message) {
   const db = getDatabase();
   const sender_uid = await getUIDByEmail(sender_email);
   const receiver_uid = await getUIDByEmail(receiver_email);
@@ -96,4 +96,24 @@ export async function getMostRecentMessage(user_email, recipient_email) {
   const msgList = await getListOfMessages(user_email, recipient_email)
   const message = msgList[msgList.length - 1];
   return message;
+} */
+
+export async function createRoom(user_email, recipient_email) {
+  const user_uid = await getUIDByEmail(user_email);
+  const recipient_uid = await getUIDByEmail(recipient_email);
+
+  const uid_list = [user_uid, recipient_uid];
+
+  let sorted_uid_list = uid_list.sort();
+
+  const roomID = sorted_uid_list[0] + sorted_uid_list[1];
+
+  const db = getDatabase();
+
+  var payload = {};
+  payload["messages"] = {}
+  payload["users"] = {user_1: user_email, user_2: recipient_email};
+  set(ref(db, 'rooms/' + roomID), payload);
+
+  push(ref(db, 'users/' + user_uid + '/rooms'), roomID);
 }
