@@ -169,5 +169,5 @@ export async function generateRoomIDFromEmails(email1, email2) {
 
   const roomID = sorted_uid_list[0] + sorted_uid_list[1];
 
-  return roomID
+  return roomID;
 }
