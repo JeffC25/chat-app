@@ -1,5 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Layout from "./Layout"
+import { getUsersFriends } from "../utils/database";
+import { useState } from "react";
+import { getAuth } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 
 const userCard = () => {
     const name = "John Doe";
@@ -17,14 +21,24 @@ const Conversations = ({user}) => {
     // const location = useLocation();
     // // const path = location.pathname;
     // const params = new URLSearchParams(location.search);
+    const [userFriendList, setUserFriendList] = useState([]);
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            async function effect() {
+                setUserFriendList(await getUsersFriends(auth.currentUser.email));
+            }
+            effect();
+        } else {
 
-    console.log("conversations for" + user)
+        }
+      });
 
     return (
         <Layout>
             <div className="h-full w-screen flex flex-col absolute justify-center -mt-20 -z-10">
                 <div className="overflow-y-scroll w-full mx-auto h-3/4 ">
-                    {Array(10).fill(userCard())}
+                    {userFriendList.fill(userCard())}
                 </div>
             </div>
         </Layout>
