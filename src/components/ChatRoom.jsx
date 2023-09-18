@@ -48,7 +48,7 @@ const Input = ({ user, id }) => {
 };
 
 const ChatRoom = ({ user }) => {
-    // const anchor = useRef();
+    const anchor = useRef()
 
     const { id } = useParams();
     const [messages, setMessages] = useState([""]);
@@ -61,6 +61,7 @@ const ChatRoom = ({ user }) => {
             const data = snapshot.val();
             console.log(data);
             setMessages((Object.values(data)).map(item => Message({ ...item, userID: user.uid, })));
+            anchor.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
         })
 
         return () => {
@@ -71,13 +72,11 @@ const ChatRoom = ({ user }) => {
     return (
         <Layout>
             <div className="h-screen w-screen flex flex-col fixed">
-                <div className="overflow-y-scroll block flex-shrink-1 w-2/3 mx-auto">
-                    <div className="self-center w-full h-screen flex flex-col px-4">
-                        {...messages}
-                        {/* <div ref={anchor}></div> */}
-                    </div>
+                <div className="overflow-y-auto flex-shrink-1 w-2/3 mx-auto flex-row justify-between">
+                    {...messages}
+                    <div ref={anchor} className="w-full h-20"></div>
                 </div>
-                <div className="bottom-0 w-full h-fit pb-20">
+                <div className="block relative bottom-0 w-full h-fit pb-20">
                     <div className="h-20 w-full bg-transparent flex justify-center items-center">
                         {Input({ user, id })}
                     </div>
