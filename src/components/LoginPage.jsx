@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, getAuth, signInWithPopup, setPersistence, browserSessionPersistence } from 'firebase/auth'
 import { addUserByUID } from '../utils/database';
 
 const auth = getAuth();
@@ -25,11 +25,13 @@ const LoginButton = () => {
 }
 
 const LoginPage = () => {
+    setPersistence(auth, browserSessionPersistence );
+    
     return (
         <div className="place-content-center w-screen h-screen grid bg-gradient-to-t from-blue-700 to-cyan-500">
             {LoginButton()}
         </div>
-    )
+    );
 };
 
 export default LoginPage;
