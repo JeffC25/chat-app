@@ -76,7 +76,7 @@ const ChatRoom = ({ user }) => {
                     {...messages}
                     <div ref={anchor} className="w-full h-20"></div>
                 </div>
-                <div className="block relative bottom-0 w-full h-fit pb-20">
+                <div className="absolute bottom-0 w-full h-fit pb-20">
                     <div className="h-20 w-full bg-transparent flex justify-center items-center">
                         {Input({ user, id })}
                     </div>
