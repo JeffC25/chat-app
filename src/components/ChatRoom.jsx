@@ -71,12 +71,12 @@ const ChatRoom = ({ user }) => {
 
     return (
         <Layout>
-            <div className="h-screen w-screen flex flex-col fixed">
+            <div className="h-screen w-screen flex flex-col fixed pb-40">
                 <div className="overflow-y-auto flex-shrink-1 w-2/3 mx-auto flex-row justify-between">
-                    {...messages}
+                        {...messages}
                     <div ref={anchor} className="w-full h-20"></div>
                 </div>
-                <div className="absolute bottom-0 w-full h-fit pb-20">
+                <div className="block fixed bottom-0 w-full h-fit">
                     <div className="h-20 w-full bg-transparent flex justify-center items-center">
                         {Input({ user, id })}
                     </div>
