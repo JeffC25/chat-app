@@ -4,7 +4,7 @@ import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from "../utils/Authentication";
 import Layout from "./Layout";
 import { useParams } from "react-router";
-import { sendMessage } from "../utils/database"
+import * as DATA from "../utils/database"
 
 const Message = ({ userID, author, authorPic, body }) => {
     return (
@@ -24,18 +24,19 @@ const Message = ({ userID, author, authorPic, body }) => {
 const Input = ({ user, id }) => {
     const [message, setMessage] = useState("")
 
-    const handleSubmit = (e) => {
+    const sendMessage = (e) => {
         e.preventDefault()
         if(message == "") {
             return 
         } else {
-            sendMessage(user.email, user.photoURL, id, message);
+            DATA.sendMessage(user.email, user.photoURL, id, message);
+            document.getElementById("input_text").value = "";
             setMessage("");
         }
     }
 
     return (
-        <form onSubmit={handleSubmit} className="h-12 w-2/3 flex self-center shadow-lg">
+        <form onSubmit={sendMessage} className="h-12 w-2/3 flex self-center shadow-lg">
             <input type="text"
                 placeholder="Messsage"
                 value={message}
@@ -54,7 +55,10 @@ const ChatRoom = ({ user }) => {
     const [messages, setMessages] = useState([""]);
     const db = getDatabase();
 
-    const messageRef = ref(db, `/rooms/${id}`);
+    let messageRef = ref(db, "/rooms/global/");
+    if (id) {
+        messageRef = ref(db, `/rooms/${id}`);
+    }
 
     useEffect(() => {
         onValue(messageRef, (snapshot) => {
