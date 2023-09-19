@@ -14,7 +14,7 @@ function App() {
 
   // const auth = getAuth();
   // const provider = new GoogleAuthProvider();
-
+  
   const { user } = useContext(AuthContext);
   return (
     <>

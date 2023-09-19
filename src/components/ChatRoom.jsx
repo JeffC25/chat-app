@@ -1,14 +1,13 @@
 import { getDatabase, ref, child, push, update, onValue } from "firebase/database";
-import { getAuth } from "firebase/auth";
 import { useContext, useState, useEffect, useRef } from 'react';
-import { AuthContext } from "../utils/Authentication";
 import Layout from "./Layout";
 import { useParams } from "react-router";
 import { sendMessage } from "../utils/database"
 
-const Message = ({ userID, author, authorPic, body }) => {
+const Message = ({ userEmail, author, authorPic, body }) => {
+    // console.log(userEmail)
     return (
-        <div className={`flex items-start ${author == userID ? "flex-row-reverse" : "flex-row"} my-2`}>
+        <div className={`flex items-start ${author == userEmail ? "flex-row-reverse" : "flex-row"} my-2`}>
             <div className="w-12 h-12 rounded-full bg-neutral-200 shadow-xl">
                 <img src={authorPic} alt="" referrerPolicy="no-referrer" className="rounded-full" />
             </div>
@@ -48,6 +47,7 @@ const Input = ({ user, id }) => {
 };
 
 const ChatRoom = ({ user }) => {
+    const email = user.email
     const anchor = useRef()
 
     const { id } = useParams();
@@ -60,7 +60,7 @@ const ChatRoom = ({ user }) => {
         onValue(messageRef, (snapshot) => {
             const data = snapshot.val();
             console.log(data);
-            setMessages((Object.values(data)).map(item => Message({ ...item, userID: user.uid, })));
+            setMessages((Object.values(data)).map(item => Message({ ...item, userEmail: email, })));
             anchor.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
         })
 
