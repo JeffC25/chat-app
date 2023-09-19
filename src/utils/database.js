@@ -5,7 +5,7 @@ export async function getUIDByEmail(email) {
   const dbRef = ref(getDatabase());
   const snapshot = await get(child(dbRef, `users`));
   const list = snapshot.val();
-  console.log("get uid by email")
+  console.debug("get uid by email")
   for (const key in list) {
     if (list[key].user_info.email == email) {
       return key
@@ -16,7 +16,7 @@ export async function getEmailByUID(uid) {
   const dbRef = ref(getDatabase());
   const snapshot = await get(child(dbRef, `users/${uid}`));
   const snapVal = snapshot.val();
-  console.log("get email by uid")
+  console.debug("get email by uid")
   return snapVal.user_info.email;
 }
 
@@ -29,7 +29,7 @@ export function addUserByUID(uid, email, name, photo) {
     photo: photo,
     email: email,
   });
-  console.log("add user by uid")
+  console.debug("add user by uid")
 }
 
 //this is an async function that will generate a list of emails
@@ -42,7 +42,7 @@ export async function getListOfUsers() {
   for (const key in list) {
     emailList.push(list[key].user_info.email);
   }
-  console.log("get list of users")
+  console.debug("get list of users")
   return emailList;
 }
 
@@ -120,7 +120,7 @@ export async function createRoom(user_email, recipient_email) {
   set(ref(db, 'users/' + user_uid + '/rooms/' + roomID), roomID);
   set(ref(db, 'users/' + recipient_uid + '/rooms/' + roomID), roomID);
 
-  console.log("create room")
+  console.debug("create room")
 }
 
 export async function sendMessage(user_email, photo, roomID, message) {
@@ -154,7 +154,7 @@ export async function getUsersFriends(user_email) {
       userList.push(value.user_info);
     }
   }
-  console.log("get users friends")
+  console.debug("get users friends")
   return userList;
 }
 
@@ -168,6 +168,6 @@ export async function generateRoomIDFromEmails(email1, email2) {
 
   const roomID = sorted_uid_list[0] + sorted_uid_list[1];
 
-  console.log("generate room id from emails")
+  console.debug("generate room id from emails")
   return roomID;
 }
