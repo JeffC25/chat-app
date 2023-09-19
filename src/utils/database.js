@@ -133,8 +133,6 @@ export async function sendMessage(user_email, photo, roomID, message) {
     authorPic: photo
   };
   push(ref(db, 'rooms/' + roomID), payload);
-
-  console.info
 }
 
 export async function getUsersFriends(user_email) {
