@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import Layout from "./Layout"
 import { generateRoomIDFromEmails, getUsersFriends } from "../utils/database";
 import { useEffect, useState } from "react";
-import { getAuth } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom"
+import Layout from "./Layout"
 
 const GlobalCard = () => {
     return (
@@ -24,7 +22,7 @@ const UserCard = (user, email, navigate) => {
     async function handleClick() {
         const roomID = await generateRoomIDFromEmails(email, user.email);
         navigate("/chat/" + roomID);
-    }
+    };
 
     return (
         <div onClick={() => handleClick()} className="flex w-1/2 h-24 bg-[rgba(0,0,0,0.25)] hover:bg-[rgba(0,0,0,0.5)] p-2 rounded-full mx-auto my-2 items-center" >
@@ -37,23 +35,9 @@ const UserCard = (user, email, navigate) => {
 };
 
 const Conversations = ({user}) => {
-    // const location = useLocation();
-    // // const path = location.pathname;
-    // const params = new URLSearchParams(location.search);
     const navigate = useNavigate();
     const [userFriendList, setUserFriendList] = useState([]);
-    // const auth = getAuth();
-    // onAuthStateChanged(auth, (user) => {
-    //     if (user) {
-    //         async function effect() {
-    //             setUserFriendList(await getUsersFriends(auth.currentUser.email));
-    //         }
-    //         effect();
-    //     } else {
 
-    //     }
-    //   });
-    
     useEffect(() => {
         if (user) {
             async function effect() {
@@ -68,14 +52,14 @@ const Conversations = ({user}) => {
     return (
         <Layout>
             <div className="h-full w-screen flex flex-col absolute justify-center -mt-20 -z-10">
-                <div className="overflow-y-scroll w-full mx-auto h-3/4 ">
+                <div className="overflow-y-auto w-full mx-auto h-3/4 ">
                     {GlobalCard()}
                     {userFriendList.map((user) => {
                         return UserCard(user, user.email, navigate)})};
                 </div>
             </div>
         </Layout>
-    )
-}
+    );
+};
 
 export default Conversations;

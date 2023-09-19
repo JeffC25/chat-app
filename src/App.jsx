@@ -1,7 +1,7 @@
 import Layout from './components/Layout';
 import ChatRoom from './components/ChatRoom';
 import LoginPage from './components/LoginPage';
-// import SearchResults from './components/SearchResults';
+// import  from './components/SearchResults';
 
 import { AuthContext } from "./utils/Authentication";
 import { useContext } from 'react';

@@ -1,5 +1,4 @@
-// import { useNavigate } from 'react-router';
-import { createSearchParams, useNavigate, useLocation, Link } from 'react-router-dom';
+import { createSearchParams, useNavigate, Link } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
 import { useState } from 'react';
 import '../utils/firebase';
@@ -8,12 +7,9 @@ import { createRoom } from '../utils/database';
 const auth = getAuth();
 
 const SearchBar = () => {
-    // const location = useLocation();
-    // const params = new URLSearchParams(location.search);
     const [query, setQuery] = useState("")
     async function handleSubmit(e) {
         e.preventDefault();
-        //query is email
         const added_email = query;
         await createRoom(auth.currentUser.email, added_email);
     };
@@ -40,7 +36,7 @@ const ConvoButton = () => {
 
         </div>
     );
-}
+};
 
 const LogoutButton = () => {
     const navigate = useNavigate();
@@ -51,7 +47,8 @@ const LogoutButton = () => {
           }).catch((error) => {
             // An error happened
           });
-    }
+    };
+
     return (
         <button className="h-12 w-20 bg-neutral-200 hover:bg-neutral-400 rounded-full self-center text-cyan-600 shadow-lg" onClick={logout}>
             Logout
