@@ -11,3 +11,8 @@ To run this project locally:
 2. Create a [Firebase config](https://firebase.google.com/) and populate `src/utils/firebase.js` with it
 3. Make sure [Node.js](https://nodejs.org/en/download) is installed
 4. Run `npm i` and `npm run dev` to launch the application
+
+## Gallery
+
+![Global Chat Image](https://github.com/JeffC25/chat-app/blob/main/public/globalchat.png)
+![Chat List Image](https://github.com/JeffC25/chat-app/blob/main/public/chats.png)
