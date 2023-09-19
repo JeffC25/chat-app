@@ -115,7 +115,13 @@ export async function createRoom(user_email, recipient_email) {
   const db = getDatabase();
 
   var payload = {};
-  set(ref(db, 'rooms/' + roomID), payload);
+  set(ref(db, 'rooms/' + roomID), "").then(() => {
+    console.log(`room ${roomID} created sucessfully`)
+  }).catch((error) => {
+    console.error(error)
+  });
+
+  set(ref(db, 'test/abc'), "")
 
   set(ref(db, 'users/' + user_uid + '/rooms/' + roomID), roomID);
   set(ref(db, 'users/' + recipient_uid + '/rooms/' + roomID), roomID);
@@ -157,6 +163,7 @@ export async function getUsersFriends(user_email) {
     }
   }
   console.log("get users friends")
+  console.log(userList);
   return userList;
 }
 
