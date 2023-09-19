@@ -1,23 +1,14 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
+    apiKey: "AIzaSyA2a3Ia3PwV26dT25W2AEYQMR1Z10KV5j0",
+    authDomain: "chat-app-b275d.firebaseapp.com",
+    projectId: "chat-app-b275d",
+    storageBucket: "chat-app-b275d.appspot.com",
+    messagingSenderId: "979674436067",
+    appId: "1:979674436067:web:e9a528aedc2f141058d0d6",
+    measurementId: "G-VP82B81KTM",
+    databaseURL: "https://chat-app-b275d-default-rtdb.firebaseio.com/"
+};
 
-    apiKey: "AIzaSyAT_7411VVAQkbOBOSY38Rx1-XFh0FoRLQ",
-  
-    authDomain: "chat-app-2b8a7.firebaseapp.com",
-  
-    databaseURL: "https://chat-app-2b8a7-default-rtdb.firebaseio.com",
-  
-    projectId: "chat-app-2b8a7",
-  
-    storageBucket: "chat-app-2b8a7.appspot.com",
-  
-    messagingSenderId: "429862817047",
-  
-    appId: "1:429862817047:web:4c8058f1ee68849518bb52",
-  
-    measurementId: "G-2LFEP4X5MM"
-  
-  };
-  
 export const app = initializeApp(firebaseConfig);

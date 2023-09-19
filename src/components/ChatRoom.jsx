@@ -60,7 +60,6 @@ const ChatRoom = ({ user }) => {
         onValue(messageRef, (snapshot) => {
             const data = snapshot.val();
             console.log(data);
-            console.log("message recieved")
             setMessages((Object.values(data)).map(item => Message({ ...item, userID: user.uid, })));
             anchor.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
         })
