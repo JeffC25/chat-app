@@ -25,8 +25,10 @@ export const Authentication = ({ children }) => {
 
     if (loading) {
         return (
-            <div className="bg-gradient-to-t from-blue-600 to-cyan-500 w-screen h-screen flex justify-center py-96">
-                <Loading/>
+            <div className="bg-gradient-to-t from-blue-600 to-cyan-500 w-screen h-screen flex flex-col justify-center fixed">
+                <div className="w-full justify-center flex">
+                    <Loading/>
+                </div>
             </div>
         );
     }
