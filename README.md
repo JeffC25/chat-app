@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a real-time chat application. The frontend is built with React and Tailwind Css, and the backend is built with Google Firebase.
+This project is a real-time chat application. The frontend is built with React and Tailwind CSS, and the backend is built with Google Firebase.
 
 ## Set Up
 
