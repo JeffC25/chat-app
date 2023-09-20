@@ -84,7 +84,7 @@ const ChatRoom = ({ user }) => {
             <div className="h-screen w-screen flex flex-col fixed pb-40">
                 <div className="overflow-y-auto flex-shrink-1 md:w-2/3 mx-auto flex-row justify-between px-4">
                         {...messages}
-                    <div ref={anchor} className="w-full"></div>
+                    <div ref={anchor} className="w-full h-20 md:h-0"></div>
                 </div>
                 <div className="block fixed bottom-0 w-full h-fit">
                     <div className="h-20 w-full bg-transparent flex justify-center items-center">
