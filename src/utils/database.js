@@ -123,12 +123,12 @@ export async function createRoom(user_email, recipient_email) {
   console.debug("create room")
 }
 
-export async function sendMessage(user_email, photo, roomID, message) {
+export async function sendMessage(user, photo, roomID, message) {
 
   const db = getDatabase();
 
   var payload = {
-    author: user_email,
+    author: user,
     body: message,
     authorPic: photo
   };

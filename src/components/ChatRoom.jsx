@@ -27,7 +27,7 @@ const Input = ({ user, id }) => {
         if (message == "") {
             return 
         } else {
-            sendMessage(user.email, user.photoURL, id, message);
+            sendMessage(user.uid, user.photoURL, id, message);
             setMessage("");
         }
     };
@@ -47,7 +47,7 @@ const Input = ({ user, id }) => {
 
 const ChatRoom = ({ user }) => {
 
-    const email = user.email;
+    const email = user.uid;
     const anchor = useRef();
 
     const { id } = useParams();
