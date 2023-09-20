@@ -55,7 +55,7 @@ const Conversations = ({user}) => {
                 <div className="overflow-y-auto w-full mx-auto h-3/4 ">
                     {GlobalCard()}
                     {userFriendList.map((user) => {
-                        return UserCard(user, user.email, navigate)})};
+                        return UserCard(user, user.email, navigate)})}
                 </div>
             </div>
         </Layout>

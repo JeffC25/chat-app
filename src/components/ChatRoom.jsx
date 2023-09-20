@@ -7,7 +7,7 @@ import { sendMessage } from "../utils/database"
 const Message = ({ userEmail, author, authorPic, body }) => {
     return (
         <div className={`flex items-start ${author == userEmail ? "flex-row-reverse" : "flex-row"} my-2`}>
-            <div className="w-12 h-12 rounded-full bg-neutral-200 shadow-xl">
+            <div className="w-12 h-12 rounded-full bg-neutral-200 shadow-xl flex-shrink-0">
                 <img src={authorPic} alt="" referrerPolicy="no-referrer" className="rounded-full" />
             </div>
             <div className="w-fit bg-neutral-200 rounded-2xl max-w-lg shadow-xl flex mx-2">
@@ -82,7 +82,7 @@ const ChatRoom = ({ user }) => {
     return (
         <Layout>
             <div className="h-screen w-screen flex flex-col fixed pb-40">
-                <div className="overflow-y-auto flex-shrink-1 w-2/3 mx-auto flex-row justify-between px-4">
+                <div className="overflow-y-auto flex-shrink-1 md:w-2/3 mx-auto flex-row justify-between px-4">
                         {...messages}
                     <div ref={anchor} className="w-full"></div>
                 </div>
