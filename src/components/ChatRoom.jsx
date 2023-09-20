@@ -11,7 +11,7 @@ const Message = ({ userEmail, author, authorPic, body }) => {
                 <img src={authorPic} alt="" referrerPolicy="no-referrer" className="rounded-full" />
             </div>
             <div className="w-fit bg-neutral-200 rounded-2xl max-w-lg shadow-xl flex mx-2">
-                <div className="m-4 text-neutral-700 break-all">
+                <div className="m-4 text-neutral-700 break-words">
                     {body}
                 </div>
             </div>
