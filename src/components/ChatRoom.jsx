@@ -77,12 +77,12 @@ const ChatRoom = ({ user }) => {
 
     return (
         <Layout>
-            <div className="h-screen w-screen flex flex-col fixed pb-40">
-                <div className="overflow-y-auto flex-shrink-1 md:w-2/3 mx-auto flex-row justify-between px-4">
+            <div className="h-screen w-screen flex flex-col fixed">
+                <div className="overflow-y-auto flex-shrink-1 md:w-2/3 mx-auto flex-row justify-between px-4 mb-40">
                     {...messages}
                     <div ref={anchor} className="w-full h-0"></div>
                 </div>
-                <div className="fixed bottom-0 h-20 w-full flex justify-center rounded-full">
+                <div className="fixed bottom-0 h-20 w-full flex justify-center">
                     {/* <button onClick={() => console.log(anchor.current?.getBoundingClientRect().y)} className="h-20 w-20 bg-red-400">check</button> */}
                     {Input({ user, id })}
                 </div>
