@@ -33,14 +33,14 @@ const Input = ({ user, id }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="h-12 w-2/3 flex self-center shadow-lg rounded-full">
+        <form onSubmit={handleSubmit} className="h-20 p-4 w-full flex justify-center">
             <input type="text"
                 placeholder="Messsage"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 autoComplete="false"
-                className="h-full w-full bg-neutral-200 rounded-l-full my-auto pl-4 outline-none text-neutral-700" />
-            <button type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 text-blue-700">Send</button>
+                className="h-full bg-neutral-200 rounded-l-full my-auto pl-4 outline-none text-neutral-700 w-2/3 shadow-md" />
+            <button type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 text-blue-700 shadow-md hover:bg-neutral-400">Send</button>
         </form>
     );
 };
@@ -82,7 +82,7 @@ const ChatRoom = ({ user }) => {
                     {...messages}
                     <div ref={anchor} className="w-full h-0"></div>
                 </div>
-                <div className="fixed bottom-0 py-4 w-full flex justify-center">
+                <div className="fixed bottom-0 w-full flex justify-center">
                     {/* <button onClick={() => console.log(anchor.current?.getBoundingClientRect().y)} className="h-20 w-20 bg-red-400">check</button> */}
                     {Input({ user, id })}
                 </div>

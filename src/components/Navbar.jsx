@@ -20,7 +20,7 @@ const SearchBar = () => {
             onChange={(e) => setQuery(e.target.value)}
             className="h-12 w-2/3 flex self-center shadow-lg rounded-full z-50">
             <input type="text" placeholder="Add User by Email" className="h-full w-full bg-neutral-200 text-neutral-500 rounded-l-full my-auto pl-4 outline-none"/>
-            <button onClick={(event) => {handleSubmit(event)}} type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 text-cyan-600">
+            <button onClick={(event) => {handleSubmit(event)}} type="submit" className="h-full w-20 rounded-r-full bg-neutral-300 hover:bg-neutral-400 text-cyan-600">
                 Add
             </button>
         </form>
