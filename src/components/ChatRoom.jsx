@@ -33,7 +33,7 @@ const Input = ({ user, id }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="h-12 w-2/3 flex self-center shadow-lg">
+        <form onSubmit={handleSubmit} className="h-12 w-2/3 flex self-center shadow-lg rounded-full">
             <input type="text"
                 placeholder="Messsage"
                 value={message}
@@ -57,18 +57,14 @@ const ChatRoom = ({ user }) => {
     const messageRef = ref(db, `/rooms/${id}`);
 
     useEffect(() => {
-        // needs time out to work ?
+        // need setTimeout to work...?
         setTimeout(function () {
             anchor.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
         }, 0);
         
         onValue(messageRef, (snapshot) => {
             const data = snapshot.val();
-            // console.debug(data);
             setMessages((Object.values(data)).map(item => Message({ ...item, userEmail: email, })));
-            // anchor.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
-
-            // needs time out to scroll all the way down?
             setTimeout(function () {
                 anchor.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
             }, 0);
@@ -83,14 +79,12 @@ const ChatRoom = ({ user }) => {
         <Layout>
             <div className="h-screen w-screen flex flex-col fixed pb-40">
                 <div className="overflow-y-auto flex-shrink-1 md:w-2/3 mx-auto flex-row justify-between px-4">
-                        {...messages}
+                    {...messages}
                     <div ref={anchor} className="w-full h-0"></div>
                 </div>
-                <div className="block fixed bottom-0 w-full h-fit">
-                    <div className="h-20 w-full bg-transparent flex justify-center items-center rounded-full fixed bottom-0">
-                        {/* <button onClick={() => console.log(anchor.current?.getBoundingClientRect().y)} className="h-20 w-20 bg-red-400">check</button> */}
-                        {Input({ user, id })}
-                    </div>
+                <div className="fixed bottom-0 h-20 w-full flex justify-center rounded-full">
+                    {/* <button onClick={() => console.log(anchor.current?.getBoundingClientRect().y)} className="h-20 w-20 bg-red-400">check</button> */}
+                    {Input({ user, id })}
                 </div>
             </div>
         </Layout>
