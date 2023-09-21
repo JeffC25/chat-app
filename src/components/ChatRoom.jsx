@@ -82,7 +82,7 @@ const ChatRoom = ({ user }) => {
                     {...messages}
                     <div ref={anchor} className="w-full h-0"></div>
                 </div>
-                <div className="fixed bottom-0 h-20 w-full flex justify-center">
+                <div className="fixed bottom-0 bg-neutral-200 w-full flex justify-center">
                     {/* <button onClick={() => console.log(anchor.current?.getBoundingClientRect().y)} className="h-20 w-20 bg-red-400">check</button> */}
                     {Input({ user, id })}
                 </div>
