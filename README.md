@@ -3,6 +3,7 @@
 ## Overview
 
 This project is a real-time chat application. The frontend is built with React and Tailwind CSS, and the backend is built with Google Firebase.
+A live demo is available [here](https://chat-app.yerf.dev/).
 
 ## Set Up
 
