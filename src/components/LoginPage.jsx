@@ -28,7 +28,7 @@ const LoginPage = () => {
     setPersistence(auth, browserSessionPersistence );
     
     return (
-        <div className="place-content-center w-screen h-screen grid bg-gradient-to-t from-blue-700 to-cyan-500">
+        <div className="place-content-center w-screen h-screen grid bg-gradient-to-t from-cyan-200 to-blue-300">
             {LoginButton()}
         </div>
     );
