@@ -2,15 +2,15 @@
 
 ## Overview
 
-This project is a real-time chat application. The frontend is built with React and Tailwind CSS, and the backend is built with Google Firebase.
+This mini-project is a real-time chat application. The frontend is built with React, Vite, and Tailwind CSS, and the backend is built with Google Firebase.
 A live demo is available [here](https://chat-app.yerf.dev/).
 
 ## Set Up
 
 To run this project locally:
 1. Clone the repository
-2. Create a [Firebase config](https://firebase.google.com/) and populate `src/utils/firebase.js` with it
-3. Make sure [Node.js](https://nodejs.org/en/download) is installed
+2. Make sure [Node.js](https://nodejs.org/en/download) is installed
+3. Create a [Firebase config](https://firebase.google.com/) and populate `src/utils/firebase.js` with it
 4. Run `npm i` and `npm run dev` to launch the application
 
 ## Gallery
